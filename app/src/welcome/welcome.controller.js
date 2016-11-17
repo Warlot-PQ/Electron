@@ -4,12 +4,12 @@
         .controller('welcomeController', [WelcomeController]);
     
     function WelcomeController() {
-        var self = this;
+        let ctx = this;
         let name = "Pierre";
 
-        self.hello = `Hello ${name}`;
-        self.nodeJsVersion = process.versions.node;
-        self.chromiumVersion = process.versions.chrome;
-        self.electronVersion = process.versions.electron;
+        ctx.hello = `Hello ${name}`;
+        ctx.nodeJsVersion = process.versions.node;
+        ctx.chromiumVersion = process.versions.chrome;
+        ctx.electronVersion = process.versions.electron;
     }
 })();

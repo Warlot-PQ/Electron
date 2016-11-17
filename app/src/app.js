@@ -5,10 +5,15 @@
     
     angular.module('app', [
       'ngRoute',
-      'ui.materialize'
+      'ui.materialize',
     ])
     .config(['$routeProvider', function ($routeProvider) {
       $routeProvider
+        .when('/dashboard', {
+          templateUrl: _templateBase + '/dashboard/dashboard.html' ,
+          controller: 'dashboardController',
+          controllerAs: 'vm'
+        })
         .when('/form', {
           templateUrl: _templateBase + '/welcome/welcome.html' ,
           controller: 'welcomeController',
@@ -17,9 +22,8 @@
         .when('/', {
           templateUrl: _templateBase + '/simpleForm/simpleForm.html' ,
           controller: 'simpleFormController',
-          controllerAs: 'simpFormContr'
+          controllerAs: '_simpFormContr'
         })
         .otherwise({ redirectTo: '/' });
-      }
-    ]);
+    }]);
 })();

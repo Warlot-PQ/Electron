@@ -1,44 +1,43 @@
-<div class="app-wrapper" ng-controller="simpleFormController">
+<div class="app-wrapper">
     <div class="app-wrapper-content row">
         <div style="margin: 20px">
             Hello, this is a well formed form.
         </div>
 
         <div input-field>
-            <input type="text" ng-model="input.lastname" length="40">
+            <input type="text" ng-model="_simpFormContr.input.lastname" length="40">
             <label>Lastname</label>
-            {{error.lastname}}
+            {{_simpFormContr.error.lastname}}
         </div>
         <div input-field>
-            <input type="text" ng-model="input.firstname" length="40">
+            <input type="text" ng-model="_simpFormContr.input.firstname" length="40">
             <label>Firstname</label>
-            {{error.firstname}}
+            {{_simpFormContr.error.firstname}}
         </div>
         <div input-field>
-            <select ng-model="select.valueSelected" material-select watch>
-                <option ng-repeat="value in select.choices">{{value}}</option>
+            <select ng-model="_simpFormContr.select.valueSelected" material-select watch>
+                <option ng-repeat="value in _simpFormContr.select.choices">{{value}}</option>
             </select>
-            {{error.option}}
+            {{_simpFormContr.error.option}}
         </div>
 
         <input-autocomplete unique-id="uniqueIdInputAutoComplete" label="Choose your brand (autocomplete)"
-                            data="input.brand.value" error="input.brand.notValid" error-message="error.brand" />
+                            data="_simpFormContr.input.brand.value" error="_simpFormContr.input.brand.notValid" error-message="_simpFormContr.error.brand" />
 
     </div>
     <div class="row">
         <!-- Modal Trigger -->
-        <a class='btn' ng-click="getDataOpenModal()" ng-disable="input.brand.notValid">Save it</a>
+        <a class='btn' ng-click="_simpFormContr.getDataOpenModal()" ng-disable="_simpFormContr.input.brand.notValid">Save it</a>
     </div>
 </div>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal" ng-controller="simpleFormController">
+<div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>{{status.title}}</h4>
-        <p>{{status.content}}.</p>
+        <h4>{{_simpFormContr.status.title}}</h4>
+        <p>{{_simpFormContr.status.content}}.</p>
     </div>
     <div class="modal-footer">
         <a href="javascript:void(0)" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
     </div>
 </div>
-
