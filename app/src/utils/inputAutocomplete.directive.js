@@ -10,14 +10,20 @@
     return {
       restrict: 'AE',
       scope: {
-        error: '='
+        error: '=',
+        errorMessage: '=',
+        data: '='
       },
       templateUrl: 'src/utils/inputAutocomplete.html',
       link: function (scope, elem, attrs) {
         scope.uniqueId = attrs.uniqueId;
         scope.label = attrs.label;
 
-        let allData = {
+        scope.$watch('allData', function (allData) {
+          $(`input#${scope.uniqueId}`).autocomplete(allData);
+        });
+
+        scope.allData = {
           data: {
             "Apple": null,
             "Nokia": null,
@@ -31,13 +37,8 @@
           }
         };
 
-        scope.$watch('data', function (data) {
-          console.log("es");
-          $(`input#${scope.uniqueId}`).autocomplete(allData);
-        });
-
         scope.validData = function () {
-          scope.error = scope.data in allData.data;
+          scope.error = !(scope.data in scope.allData.data);
         };
       }
     }

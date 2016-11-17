@@ -4,9 +4,9 @@
 (function () {
   'use strict';
   angular.module('app')
-      .controller('simpleFormController', ['$scope', simpleFormController]);
+      .controller('simpleFormController', ['$scope', 'IndexedDB', simpleFormController]);
 
-  function simpleFormController($scope) {
+  function simpleFormController($scope, IndexedDB) {
     $scope.select = {
       "valueSelected": "Option 1",
       "choices": ["Option 1", "Option 2", "Option 3"]
@@ -14,10 +14,21 @@
     $scope.input = {
       "lastname": "",
       "firstname": "",
-      "brand": ""
+      brand: {
+        value: "",
+        notValid: ""
+      }
     };
     $scope.error = {};
 
+
+
+
+    IndexedDB.readAll();
+
+
+
+    
     // Initialize modal
     $('.modal').modal();
 
@@ -27,7 +38,8 @@
       let lastname = $scope.input.lastname;
       let firstname = $scope.input.firstname;
       let option = $scope.select.valueSelected;
-      let brand = $scope.input.brand;
+      let brand = $scope.input.brand.value;
+      let brandNotValid = $scope.input.brand.notValid;
 
       if (!lastname) {
         $scope.error.lastname = "Lastname cannot be empty!";
@@ -47,8 +59,7 @@
       } else {
         $scope.error.option = "";
       }
-      console.log($scope.input.brand);
-      if (!brand) {
+      if (!brand || brandNotValid) {
         $scope.error.brand = "Brand must be one of the given by the system!";
         return;
       } else {
@@ -56,7 +67,16 @@
       }
       /**/
 
-      showSuccessMessage($scope);
+      // Save data
+      // IndexedDB.save(
+      //   {id: "4", name: "toto"},
+      //   function () {
+      //     showSuccessMessage($scope);
+      //   }, function () {
+      //       showErrorMessage($scope);
+      //   });
+      // IndexedDB.readAll();
+
 
       // Open the modal
       $('.modal').modal('open');

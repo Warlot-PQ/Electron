@@ -39,6 +39,11 @@ body {
     color: red;
 }
 
+.app-disabled {
+    color: gray;
+    cursor: default;
+}
+
 /* Materialize override */
 
 .autocomplete-content {

@@ -21,18 +21,18 @@
             {{error.option}}
         </div>
 
-        <input-autocomplete unique-id="uniqueIdInputAutoComplete" label="Choose your brand (autocomplete)" error="error.brand" />
-        {{error.brand}}
+        <input-autocomplete unique-id="uniqueIdInputAutoComplete" label="Choose your brand (autocomplete)"
+                            data="input.brand.value" error="input.brand.notValid" error-message="error.brand" />
 
     </div>
     <div class="row">
         <!-- Modal Trigger -->
-        <a class='btn' ng-click="getDataOpenModal()">Save it</a>
+        <a class='btn' ng-click="getDataOpenModal()" ng-disable="input.brand.notValid">Save it</a>
     </div>
 </div>
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="modal1" class="modal" ng-controller="simpleFormController">
     <div class="modal-content">
         <h4>{{status.title}}</h4>
         <p>{{status.content}}.</p>
