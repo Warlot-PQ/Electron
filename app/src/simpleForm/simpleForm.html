@@ -1,0 +1,44 @@
+<div class="app-wrapper" ng-controller="simpleFormController">
+    <div class="app-wrapper-content row">
+        <div style="margin: 20px">
+            Hello, this is a well formed form.
+        </div>
+
+        <div input-field>
+            <input type="text" ng-model="input.lastname" length="40">
+            <label>Lastname</label>
+            {{error.lastname}}
+        </div>
+        <div input-field>
+            <input type="text" ng-model="input.firstname" length="40">
+            <label>Firstname</label>
+            {{error.firstname}}
+        </div>
+        <div input-field>
+            <select ng-model="select.valueSelected" material-select watch>
+                <option ng-repeat="value in select.choices">{{value}}</option>
+            </select>
+            {{error.option}}
+        </div>
+
+        <input-autocomplete unique-id="uniqueIdInputAutoComplete" label="Choose your brand (autocomplete)" error="error.brand" />
+        {{error.brand}}
+
+    </div>
+    <div class="row">
+        <!-- Modal Trigger -->
+        <a class='btn' ng-click="getDataOpenModal()">Save it</a>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>{{status.title}}</h4>
+        <p>{{status.content}}.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+</div>
+

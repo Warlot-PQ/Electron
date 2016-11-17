@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" href="../bower_components/materialize/dist/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+  </head>
+  <body ng-app="app">
+    <div class="app-nav">
+      <div class="app-logo">
+        <a ng-href="#/">
+          <span class="app-red">Swiss</span>life
+        </a>
+      </div>
+      <ul class="app-menu">
+        <li>
+          N°Idéal parain
+        </li><li>
+        Syntèse
+        </li><li>
+          Etat des lieux
+        </li><li>
+          <a ng-href="#/form">Situation</a>
+        </li><li>
+         N°Idéal
+        </li>
+      </ul>
+    </div>
+
+    <ng-view class="body"></ng-view>
+  </body>
+  <script src="../bower_components/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <script src="assets/hammer.min.js"></script> <!-- Fix materialize missing librairy -->
+  <script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
+  <script src="../bower_components/angular/angular.min.js"></script>
+  <script src="../bower_components/angular-route/angular-route.min.js"></script>
+  <script src="../bower_components/angular-materialize/src/angular-materialize.js"></script> <!-- materialize Angular compatibility -->
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="http://localhost:35729/livereload.js"></script>
+
+  <script src="src/app.js"></script>
+  <script src="src/welcome/welcome.controller.js"></script>
+  <script src="src/simpleForm/simpleForm.controller.js"></script>
+  <script src="src/d3Graph/d3Graph.directive.js"></script>
+  <script src="src/utils/inputAutocomplete.directive.js"></script>
+</html>

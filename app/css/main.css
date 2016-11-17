@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.app-nav {
+    height: 50px;
+    background-color: #e1e3e4;
+    font-family: "Droid Serif";
+    border-bottom: 1px solid gray;
+}
+
+.app-nav .app-logo {
+    float: left;
+    padding: 10px;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.app-nav .app-menu li {
+    float: right;
+    padding: 10px;
+    list-style-type: none;
+    border-right: 1px solid gray;
+    line-height: 30px;
+    transition: background .25s ease-out;
+}
+
+.app-nav .app-menu li:hover {
+    background-color: #F4F4F4;
+}
+
+.app-body {
+    clear: both;
+    margin: 10px;
+}
+
+.app-red {
+    color: red;
+}
+
+/* Materialize override */
+
+.autocomplete-content {
+    position: absolute; !important;
+    width: 100%; !important;
+}
+
+/* SimpleForm.html */
+
+.app-wrapper {
+    text-align: center;
+}
+
+.app-wrapper-content {
+    display: inline-block;
+    width: 300px;
+}
+
+.save-button {
+    text-align: center;
+}
