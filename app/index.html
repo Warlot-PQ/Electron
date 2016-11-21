@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
-    <link rel="stylesheet" type="text/css" href="../bower_components/materialize/dist/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-
+    <link rel="stylesheet" href="lib/materialize/bin/materialize.css">
+    <!-- scss:css -->
+    <!-- endinject -->
   </head>
   <body ng-app="app">
     <div class="app-nav">
@@ -31,24 +32,27 @@
 
     <ng-view class="body"></ng-view>
   </body>
-  <script src="../bower_components/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <script src="lib/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
   <script src="assets/hammer.min.js"></script> <!-- Fix materialize missing librairy -->
-  <script src="../bower_components/materialize/dist/js/materialize.min.js"></script>
-  <script src="../bower_components/angular/angular.min.js"></script>
-  <script src="../bower_components/angular/angular-mocks.js"></script>
-  <script src="../bower_components/angular-route/angular-route.min.js"></script>
-  <script src="../bower_components/angular-materialize/src/angular-materialize.js"></script> <!-- materialize Angular compatibility -->
+  <script src="lib/materialize/dist/js/materialize.min.js"></script>
+  <script src="lib/angular/angular.min.js"></script>
+  <script src="lib/angular-mocks/angular-mocks.js"></script>
+  <script src="lib/angular-route/angular-route.min.js"></script>
+  <script src="lib/angular-materialize/src/angular-materialize.js"></script> <!-- materialize Angular compatibility -->
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="http://localhost:35729/livereload.js"></script>
 
-  <script src="src/model/Client.js"></script>
-  <script src="src/model/File.js"></script>
-
   <script src="src/app.js"></script>
-  <script src="src/d3Graph/d3Graph.directive.js"></script>
-  <script src="src/utils/inputAutocomplete.directive.js"></script>
-  <script src="src/storage/indexedDB.factory.js"></script>
-  <script src="src/welcome/welcome.controller.js"></script>
-  <script src="src/simpleForm/simpleForm.controller.js"></script>
-  <script src="src/dashboard/dashboard.controller.js"></script>
+  <!-- angularModel:js -->
+  <!-- endinject -->
+  <!-- angularRoute:js -->
+  <!-- endinject -->
+  <!-- angularController:js -->
+  <!-- endinject -->
+  <!-- angularDirective:js -->
+  <!-- endinject -->
+  <!-- angularFactory:js -->
+  <!-- endinject -->
+  <!-- angularService:js -->
+  <!-- endinject -->
 </html>
