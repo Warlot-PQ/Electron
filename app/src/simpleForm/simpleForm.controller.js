@@ -14,8 +14,8 @@
       "choices": ["Option 1", "Option 2", "Option 3"]
     };
     ctx.input = {
-      "lastname": "",
-      "firstname": "",
+      "lastName": "",
+      "firstName": "",
       "brand": {
         "value": "",
         "notValid": ""
@@ -36,23 +36,23 @@
     }
 
     function getDataOpenModal() {
-      let lastname = ctx.input.lastname;
-      let firstname = ctx.input.firstname;
+      let firstName = ctx.input.firstName;
+      let lastName = ctx.input.lastName;
       let option = ctx.select.valueSelected;
       let brand = ctx.input.brand.value;
       let brandNotValid = ctx.input.brand.notValid;
 
-      if (!lastname) {
-        ctx.error.lastname = "Lastname cannot be empty!";
+      if (!firstName) {
+        ctx.error.firstName = "Firstname cannot be empty!";
         return;
       } else {
-        ctx.error.lastname = "";
+        ctx.error.firstName = "";
       }
-      if (!firstname) {
-        ctx.error.firstname = "Firstname cannot be empty!";
+      if (!lastName) {
+        ctx.error.lastName = "Lastname cannot be empty!";
         return;
       } else {
-        ctx.error.firstname = "";
+        ctx.error.lastName = "";
       }
       if (!option in ctx.select.choices) {
         ctx.error.option = "Option cannot be empty!";
@@ -66,28 +66,24 @@
       } else {
         ctx.error.brand = "";
       }
-      /**/
 
       // Save data
-      // IndexedDB.save(
-      //   {id: "4", name: "toto"},
-      //   function () {
-      //     showSuccessMessage();
-      //   }, function () {
-      //       showErrorMessage();
-      //   });
-      //let items = IndexedDB.readAll();
-      //console.log(items);
-      showSuccessMessage();
+      let newClient = new ClientApp(new Date().getTime(), firstName, lastName, option, brand);
+      let promise = IndexedDB.save(newClient);
+      promise.then(function (data) {
+        showSuccessMessage(data);
+      }, function (error) {
+        console.log(error);
+      });
 
       // Open the modal
       $('.modal').modal('open');
     }
 
-    function showSuccessMessage() {
+    function showSuccessMessage(newClient) {
       ctx.status = {
         "title": "Success",
-        "content": "Information successfully saved"
+        "content": "Information successfully saved: new " + newClient.toString() + "."
       };
     }
 
