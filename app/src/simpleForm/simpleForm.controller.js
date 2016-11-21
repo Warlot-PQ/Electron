@@ -32,7 +32,10 @@
 
     function activate() {
       // Initialize modal
-      $('.modal').modal();
+      $('.modal').modal({
+        dismissible: false, // Modal can be dismissed by clicking outside of the modal
+        complete: function() { location.reload(); } // Callback for Modal close
+      });
     }
 
     function getDataOpenModal() {
