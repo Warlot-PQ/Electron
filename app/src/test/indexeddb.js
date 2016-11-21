@@ -311,7 +311,7 @@ var mockIndexedDBStore = {
 		return mockIndexedDBStoreTransaction;
 	},
 
-	'createIndex' : function(key, key, params) {
+	'createIndex' : function(firstKey, secondKey, params) {
 
 	},
 
