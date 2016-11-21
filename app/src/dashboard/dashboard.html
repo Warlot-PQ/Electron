@@ -1,7 +1,7 @@
 <h3><b><u>Client list:</u></b></h3>
 <div class="row">
     <!-- Modal Trigger -->
-    <a class='btn' ng-click="vm.dropDB()">Drop DB</a>
+    <a class='btn' ng-click="vm.synchroniseDB()">Synchronise DB</a> <a class='btn' ng-click="vm.dropDB()">Drop DB</a>
 </div>
 <div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
     <div ng-repeat="(indexItem, item) in itemGroup">

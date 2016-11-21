@@ -24,6 +24,7 @@
     let factory = {
       dropDB: dropDB,
       save: save,
+      synchronise: synchronise,
       readAll: readAll
     };
 
@@ -112,6 +113,12 @@
         }, promise);
 
         return promise.promise;
+    }
+
+    function synchronise() {
+        for (let client of initClientDataset) {
+          save(client);
+        }
     }
 
     function readAll() {

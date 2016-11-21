@@ -11,7 +11,9 @@
     vm.itemsPerRow = 3;
     vm.items = [];
 
+    vm.synchroniseDB = synchroniseDB;
     vm.dropDB = dropDB;
+
 
     let promise = IndexedDB.readAll();
 
@@ -29,6 +31,11 @@
     }, function (error) {
       console.log(error);
     });
+
+    function synchroniseDB() {
+        IndexedDB.synchronise();
+        location.reload();
+    }
 
     function dropDB() {
         IndexedDB.dropDB("clientsProject");
