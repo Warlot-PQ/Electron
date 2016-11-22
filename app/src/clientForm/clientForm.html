@@ -1,0 +1,80 @@
+<div class="app-wrapper col s12">
+    <div class="app-wrapper row ">
+        <div class="col s6">
+            <div input-field>
+                <select ng-model="vm.title.valueSelected" material-select watch>
+                    <option ng-repeat="value in vm.title.choices">{{value}}</option>
+                </select>
+                <label>Civilité</label>
+                {{vm.error.title}}
+            </div>
+            <div input-field>
+                <input type="text" ng-model="vm.input.firstName" length="40">
+                <label>Prénom</label>
+                {{vm.error.firstName}}
+            </div>
+            <div input-field>
+                <input type="text" ng-model="vm.input.lastName" length="40">
+                <label>Nom</label>
+                {{vm.error.lastName}}
+            </div>
+            <div input-field>
+                <input type="text" ng-model="vm.input.company" length="40">
+                <label>Entreprise</label>
+            </div>
+            <div input-field>
+                <input type="text" ng-model="vm.input.workPosition" length="40">
+                <label>Position occupée</label>
+            </div>
+        </div>
+        <div class="col s6">
+            <div input-field>
+                <input type="text" ng-model="vm.input.address" length="40">
+                <label>Adresse postale</label>
+                {{vm.error.address}}
+            </div>
+            <div input-field>
+                <input type="text" ng-model="vm.input.phoneNumber" length="40">
+                <label>Téléphone</label>
+                {{vm.error.phoneNumber}}
+            </div>
+            <div class="row">
+                <div input-field>
+                    <div class="col s12">
+                        <label>Avez-vous des enfants ?</label>
+                        <br/>
+                    </div>
+                    <div class="col m1 s1">
+                        <input type="radio" class="with-gap" name="childrenGroup" ng-model="vm.input.children" value="false" id="childrenNo" />
+                        <label for="childrenNo">Non</label>
+                    </div>
+                    <div class="col m1 s1">
+                        <input type="radio" class="with-gap" name="childrenGroup" ng-model="vm.input.children" value="true" id="childrenYes" />
+                        <label for="childrenYes">Oui</label>
+                    </div>
+                    <br>
+                    <div class="col s12">
+                        {{vm.error.children}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="right-align">
+            <a href="#/">Retour</a>
+            <a class='btn' ng-click="vm.getDataOpenModal()">Sauvegarder</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>{{vm.status.title}}</h4>
+        <p>{{vm.status.content}}.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="javascript:void(0)" class=" modal-action modal-close waves-effect waves-green btn-flat">Ok</a>
+    </div>
+</div>

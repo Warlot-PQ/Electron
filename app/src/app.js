@@ -24,6 +24,11 @@
           controller: 'simpleFormController',
           controllerAs: '_simpFormContr'
         })
+        .when('/clientForm', {
+          templateUrl: _templateBase + '/clientForm/clientForm.html' ,
+          controller: 'clientFormController',
+          controllerAs: 'vm'
+        })
         .otherwise({ redirectTo: '/' });
     }]);
 })();
