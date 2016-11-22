@@ -54,6 +54,7 @@ gulp.task('copyRouteSources', function() {
 
 gulp.task('copyCssSources', function() {
     return gulp.src(_file.sass)
+        .pipe(debug({title: 'unicornJs:'}))
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('all.css'))
         .pipe(gulp.dest('dist/app/css/'));
@@ -73,7 +74,6 @@ gulp.task('copy-css', function() {
 
 gulp.task('copy-js', function() {
     return gulp.src(_file.js)
-    .pipe(debug({title: 'unicornJs:'}))
     .pipe(babel({presets: ['es2015']}))
     .pipe(gulp.dest('dist/app'))
 });
@@ -98,8 +98,8 @@ gulp.task('watch', function () {
     livereload.listen();
     // Watch files
     gulp.watch(_file.html, ['run']);
-    gulp.watch(_file.sass, ['run']);
     gulp.watch(_file.css, ['run']);
+    gulp.watch(_file.sass, ['run']);
     gulp.watch(_file.js, ['run']);
 });
 

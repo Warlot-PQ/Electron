@@ -6,21 +6,52 @@
 <div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
     <div ng-repeat="(indexItem, item) in itemGroup">
         <div class="col s{{12 / vm.itemsPerRow}}">
-            <div class="card blue-grey darken-1">
-                <div class="card-content white-text">
-                    <!--<span class="card-title file-id">{{item.uuid}}</span>-->
-                    <!--<p>-->
-                        <!--I am a very simple card from <span class="file-author">{{item.author}}</span>.-->
-                        <!--The title of the file is <span class="file-title">{{item.title}}</span>.-->
-                    <!--</p>-->
-                    <p class="card-title">
-                        <span class="client-firstName">{{item.firstName}}</span> <span class="client-lastName">{{item.lastName}}</span>:
-                        <ul>
-                            <li>ID: <span class="client-id">{{item.uuid}}</span></li>
-                            <li>Option: <span class="client-option">{{item.option}}</span></li>
-                            <li>Brand: <span class="client-brand">{{item.brand}}</span></li>
-                        </ul>
-                    </p>
+            <div class="swl-type"></div>
+            <div class="card swl-card red lighten-1">
+                <div class="card-content white-text swl-content">
+                    <div class="card-title row swl-header">
+                        <div class="col s2 fa fa-clock-o swl-border swl-right"></div>
+                        <div class="col s6 fa fa-address-card-o swl-border swl-right"></div>
+                        <div class="col s4 fa fa-pencil"></div>
+                    </div>
+                    <div class="row swl-body">
+                        <div class="col s2 swl-border swl-right">
+                            13:10
+                        </div><div class="col s6 swl-border swl-right">
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                        </div><div class="col s4">
+                            {{item.brand}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

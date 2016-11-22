@@ -1,11 +1,47 @@
-.file-id {
-  color: blue;
+$borderWidth: 1px;
+$borderStyle: dashed;
+$borderColor: white;
+
+.swl-type {
+  display: table-cell;
+  width: 10px;
+  background-color: green;
 }
 
-.file-author {
-  color: red;
+.swl-card {
+  display: table-cell;
+  .swl-content {
+    overflow: hidden;
+    max-height: 200px;
+  }
+  .swl-header {
+    text-align: center;
+    margin: 0;
+    div {
+      padding-bottom: 10px;
+      border-bottom: $borderWidth $borderStyle $borderColor;
+    }
+  }
+  .swl-body {
+    text-align: center;
+    display: flex;
+    div {
+      padding-top: 10px;
+    }
+  }
 }
 
-.file-title {
-  color: red;
+.swl-border {
+  &.swl-right {
+    border-right: $borderWidth $borderStyle $borderColor;
+  }
+  &.swl-left {
+    border-right: $borderWidth $borderStyle $borderColor;
+  }
+  &.swl-top {
+    border-right: $borderWidth $borderStyle $borderColor;
+  }
+  &.swl-bottom {
+    border-right: $borderWidth $borderStyle $borderColor;
+  }
 }

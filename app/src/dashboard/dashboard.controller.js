@@ -8,7 +8,7 @@
 
   function dashboardController(IndexedDB) {
     let vm = this;
-    vm.itemsPerRow = 3;
+    vm.itemsPerRow = 2;
     vm.items = [];
 
     vm.synchroniseDB = synchroniseDB;
