@@ -18,11 +18,12 @@
     let promise = IndexedDB.readAll();
 
     promise.then(function (datas) {
-      let dimension = 0;
+      let dimension = -1;
       console.log(`data read: ${datas.length}`);
       datas.forEach(function(data, index) {
 
         if (index % vm.itemsPerRow == 0) {
+          dimension += 1;
           vm.items[dimension] = [];
         }
         vm.items[dimension].push(data);
