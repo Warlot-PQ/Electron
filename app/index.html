@@ -12,7 +12,7 @@
   <body ng-app="app">
     <div class="app-nav">
       <div class="app-logo">
-        <a ng-href="#/">
+        <a ui-sref="welcome">
           <span class="app-red">Swiss</span>life
         </a>
       </div>
@@ -22,23 +22,23 @@
         </li><li>
         Syntèse
         </li><li>
-          <a href="#/dashboard">Etat des lieux</a>
+          <a ui-sref="menu.dashboard">Etat des lieux</a>
         </li><li>
-          <a ng-href="#/clientForm">Formulaire client</a>
+          <a ui-sref="clientForm">Formulaire client</a>
         </li><li>
          N°Idéal
         </li>
       </ul>
     </div>
 
-    <ng-view class="body"></ng-view>
+    <div class="body" ui-view></div>
   </body>
   <script src="lib/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
   <script src="assets/hammer.min.js"></script> <!-- Fix materialize missing librairy -->
   <script src="lib/materialize/dist/js/materialize.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>
   <script src="lib/angular-mocks/angular-mocks.js"></script>
-  <script src="lib/angular-route/angular-route.min.js"></script>
+  <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="lib/angular-materialize/src/angular-materialize.js"></script> <!-- materialize Angular compatibility -->
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="http://localhost:35729/livereload.js"></script>

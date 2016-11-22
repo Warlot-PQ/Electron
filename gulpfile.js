@@ -46,12 +46,6 @@ gulp.task('copyBowerSources', function() {
         .pipe(gulp.dest('dist/app/lib/'));
 });
 
-gulp.task('copyRouteSources', function() {
-    return gulp.src(_file.route)
-        .pipe(concat('route.css'))
-        .pipe(gulp.dest('dist/app/'));
-});
-
 gulp.task('copyCssSources', function() {
     return gulp.src(_file.sass)
         .pipe(debug({title: 'unicornJs:'}))
@@ -80,7 +74,7 @@ gulp.task('copy-js', function() {
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyRouteSources', 'copyCssSources', 'injectors', 'tmp1', 'tmp2');
+    return runSequence('copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'tmp1', 'tmp2');
 });
 
 gulp.task('tmp1', function() {

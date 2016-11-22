@@ -10,9 +10,11 @@ $borderColor: white;
 
 .swl-card {
   display: table-cell;
+  padding: 8px;
   .swl-content {
     overflow: hidden;
     max-height: 200px;
+    padding: 0;
   }
   .swl-header {
     text-align: center;
