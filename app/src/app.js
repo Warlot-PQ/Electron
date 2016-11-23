@@ -10,21 +10,33 @@
     .config(['$stateProvider', function ($stateProvider, $urlRouterProvider) {
       $stateProvider.state('welcome', {
         url: '/welcome',
-        templateUrl: _templateBase + '/welcome/welcome.html' ,
-        controller: 'welcomeController',
-        controllerAs: '_welContr'
+        views: {
+          'body': {
+            templateUrl: _templateBase + '/welcome/welcome.html' ,
+            controller: 'welcomeController',
+            controllerAs: '_welContr'
+          }
+        }
       })
       .state('form', {
         url: '/form',
-        templateUrl: _templateBase + '/simpleForm/simpleForm.html' ,
-        controller: 'simpleFormController',
-        controllerAs: '_simpFormContr'
+        views: {
+          'body': {
+            templateUrl: _templateBase + '/simpleForm/simpleForm.html' ,
+            controller: 'simpleFormController',
+            controllerAs: '_simpFormContr'
+          }
+        }
       })
 	  .state('clientForm', {
         url: '/clientForm',
-        templateUrl: _templateBase + '/clientForm/clientForm.html' ,
-        controller: 'clientFormController',
-        controllerAs: 'vm'
+      views: {
+        'body': {
+          templateUrl: _templateBase + '/clientForm/clientForm.html' ,
+          controller: 'clientFormController',
+          controllerAs: 'vm'
+        }
+      }
 	  });
       //$urlRouterProvider.otherwise('/');
     }]);

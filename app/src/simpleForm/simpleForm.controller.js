@@ -76,6 +76,7 @@
       promise.then(function (data) {
         showSuccessMessage(data);
       }, function (error) {
+        showErrorMessage();
         console.log(error);
       });
 

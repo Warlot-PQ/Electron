@@ -4,27 +4,19 @@
 (function () {
   'use strict';
   angular.module('app')
-      .controller('clientFormController', ['IndexedDB', clientFormController]);
+      .controller('clientFormController', ['clientFactory', clientFormController]);
 
-  const keyPath = "uuid";
-  const objectStoreName = "clients";
-  const objectStoreVersion = 1;
-  const indexes = [{name: "by_name", column: "lastName", option: {unique: false}}];
   const uuid = require('uuid');
-  const dataset = [
-    {uuid: uuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
-    {uuid: uuid(), title: "Monsieur", firstName: "Pierre-Quentin", lastName: "Warlot", company: "eBusiness Information", workPosition: "Consultant", address: "94230", phoneNumber: "0687654321", children: false}
-  ];
-  const idbTable = new IDBTableApp(keyPath, objectStoreName, objectStoreVersion, indexes, dataset);
 
-  function clientFormController(IndexedDB) {
-    let ctx = this;
+  function clientFormController(clientFactory) {
+    const _clientFactory = clientFactory;
+    let vm = this;
 
-    ctx.title = {
+    vm.title = {
       "valueSelected": "",
       "choices": ["", "Monsieur", "Madame"]
     };
-    ctx.input = {
+    vm.input = {
       "firstName": "",
       "lastName": "",
       "company": "",
@@ -34,11 +26,11 @@
       "children": ""
     };
     // Error data about each input
-    ctx.error = {};
+    vm.error = {};
     // Data displayed after "save it" button clicked
-    ctx.status = {};
+    vm.status = {};
 
-    ctx.getDataOpenModal = getDataOpenModal;
+    vm.getDataOpenModal = getDataOpenModal;
 
     activate();
 
@@ -51,58 +43,60 @@
     }
 
     function getDataOpenModal() {
-      let title = ctx.title.valueSelected;
-      let firstName = ctx.input.firstName;
-      let lastName = ctx.input.lastName;
-      let company = ctx.input.company;
-      let workPosition = ctx.input.workPosition;
-      let address = ctx.input.address;
-      let phoneNumber = ctx.input.phoneNumber;
-      let children = ctx.input.children;
+      let title = vm.title.valueSelected;
+      let firstName = vm.input.firstName;
+      let lastName = vm.input.lastName;
+      let company = vm.input.company;
+      let workPosition = vm.input.workPosition;
+      let address = vm.input.address;
+      let phoneNumber = vm.input.phoneNumber;
+      let children = vm.input.children;
 
       if (!title) {
-        ctx.error.title = "La civilité ne peut pas être vide !";
+        vm.error.title = "La civilité ne peut pas être vide !";
         return;
       } else {
-        ctx.error.title = "";
+        vm.error.title = "";
       }
       if (!firstName) {
-        ctx.error.firstName = "Le prénom ne peut pas être vide !";
+        vm.error.firstName = "Le prénom ne peut pas être vide !";
         return;
       } else {
-        ctx.error.firstName = "";
+        vm.error.firstName = "";
       }
       if (!lastName) {
-        ctx.error.lastName = "Le nom ne peut pas être vide !";
+        vm.error.lastName = "Le nom ne peut pas être vide !";
         return;
       } else {
-        ctx.error.lastName = "";
+        vm.error.lastName = "";
       }
       if (!address) {
-        ctx.error.address = "L'adresse ne peut pas être vide !";
+        vm.error.address = "L'adresse ne peut pas être vide !";
         return;
       } else {
-        ctx.error.address = "";
+        vm.error.address = "";
       }
       if (!phoneNumber) {
-        ctx.error.phoneNumber = "Le numéro de téléphone ne peut pas être vide !";
+        vm.error.phoneNumber = "Le numéro de téléphone ne peut pas être vide !";
         return;
       } else {
-        ctx.error.phoneNumber = "";
+        vm.error.phoneNumber = "";
       }
       if (!children) {
-        ctx.error.children = "La sélection enfant(s) ne peut pas être vide !";
+        vm.error.children = "La sélection enfant(s) ne peut pas être vide !";
         return;
       } else {
-        ctx.error.children = "";
+        vm.error.children = "";
       }
 
       // Save data
-      let newClient = new ClientApp(uuid(), title, firstName, lastName, company, workPosition, address, phoneNumber, children);
-      let promise = IndexedDB.save(idbTable, newClient);
+      let promise = _clientFactory.add(
+          new ClientApp(uuid(), title, firstName, lastName, company, workPosition, address, phoneNumber, children));
+
       promise.then(function (data) {
         showSuccessMessage(data);
       }, function (error) {
+        showErrorMessage();
         console.log(error);
       });
 
@@ -111,14 +105,14 @@
     }
 
     function showSuccessMessage(newClient) {
-      ctx.status = {
+      vm.status = {
         "title": "Succès",
         "content": "Les informations ont été correctement sauvegardées : " + newClient.toString()
       };
     }
 
     function showErrorMessage() {
-      ctx.status = {
+      vm.status = {
         "title": "Erreur",
         "content": "Une erreur a été rencontrée. Les informations n'ont pas pu être sauvegardées."
       };

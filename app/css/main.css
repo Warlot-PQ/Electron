@@ -13,6 +13,20 @@ body {
     cursor: pointer;
 }
 
+.textAlignLeft {
+    text-align: left;
+}
+
+
+.textAlignRight {
+    text-align: right;
+}
+
+
+.textAlignCenter {
+    text-align: center;
+}
+
 .app-nav {
     height: 50px;
     background-color: #e1e3e4;
