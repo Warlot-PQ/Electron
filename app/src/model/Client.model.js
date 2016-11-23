@@ -1,16 +1,21 @@
 /**
- * Created by jscarella on 21/11/16.
+ * Created by jscarella on 22/11/16.
  */
-class ClientApp {
-  constructor(uuid, firstName, lastName, option, brand) {
+class NewClientApp {
+
+  constructor(uuid, title, firstName, lastName, company, workPosition, address, phoneNumber, children) {
     this.uuid = uuid;
+    this.title = title;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.option = option;
-    this.brand = brand;
+    this.company = company;
+    this.workPosition = workPosition;
+    this.address = address;
+    this.phoneNumber = phoneNumber;
+    this.children = children;
   }
 
   toString() {
-    return `Client [id = ${this.uuid}, firstName = ${this.firstName}, lastName = ${this.lastName}, option = ${this.option}, brand = ${this.brand}]`;
+    return `Client [uuid = ${this.uuid}, civilité = ${this.title}, prénom = ${this.firstName}, nom = ${this.lastName}, entreprise = ${this.company}, position occupée = ${this.workPosition}, adresse = ${this.address}, téléphone = ${this.phoneNumber}, enfants = ${this.children}]`;
   }
 }
