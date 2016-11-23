@@ -31,7 +31,14 @@
       </ul>
     </div>
 
-    <div class="body" ui-view></div>
+    <div class="swl-navbar">
+      <div ui-view="title"></div>
+      <div ui-view="menu"></div>
+      <div ui-view="submenu"></div>
+    </div>
+    <div>
+      <div ui-view="body"></div>
+    </div>
   </body>
   <script src="lib/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
   <script src="assets/hammer.min.js"></script> <!-- Fix materialize missing librairy -->

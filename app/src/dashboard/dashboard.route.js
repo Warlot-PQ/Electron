@@ -8,7 +8,7 @@
         $stateProvider.state('menu.dashboard', {
           url: '/dashboard',
           views: {
-            'body': {
+            'body@': {
               templateUrl: _templateBase + '/dashboard/dashboard.html' ,
               controller: 'dashboardController',
               controllerAs: 'vm'

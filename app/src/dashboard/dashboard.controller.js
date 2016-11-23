@@ -4,32 +4,22 @@
 (function () {
   'use strict';
   angular.module('app')
-      .controller('dashboardController', ['IndexedDB', dashboardController]);
+      .controller('dashboardController', ['clientFactory', dashboardController]);
 
-  const keyPath = "uuid";
-  const objectStoreName = "clients";
-  const objectStoreVersion = 1;
-  const indexes = [{name: "by_name", column: "lastName", option: {unique: false}}];
-  const uuid = require('uuid');
-  const dataset = [
-    {uuid: uuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
-    {uuid: uuid(), title: "Monsieur", firstName: "Pierre-Quentin", lastName: "Warlot", company: "eBusiness Information", workPosition: "Consultant", address: "94230", phoneNumber: "0687654321", children: false}
-  ];
-  const idbTable = new IDBTableApp(keyPath, objectStoreName, objectStoreVersion, indexes, dataset);
+  function dashboardController(clientFactory) {
+    const _clientFactory = clientFactory;
 
-  function dashboardController(IndexedDB, Client) {
     let vm = this;
     vm.itemsPerRow = 2;
     vm.items = [];
 
-    vm.synchronise = synchronise;
-    vm.drop = drop;
+    vm.clearClients = clearClients;
 
-    let promise = IndexedDB.readAll(idbTable);
+    let promise = _clientFactory.getAll();
 
     promise.then(function (datas) {
       let dimension = -1;
-      console.log(`data read: ${datas.length}`);
+      console.log(`data read length: ${datas.length}`);
       datas.forEach(function(data, index) {
 
         if (index % vm.itemsPerRow == 0) {
@@ -43,14 +33,9 @@
       console.log(error);
     });
 
-    function synchronise() {
-        IndexedDB.synchronise(idbTable);
-        location.reload();
-    }
-
-    function drop() {
-        IndexedDB.drop(idbTable);
-        location.reload();
+    function clearClients() {
+      _clientFactory.clear();
+      location.reload();
     }
   }
 })();

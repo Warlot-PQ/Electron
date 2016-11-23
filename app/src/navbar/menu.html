@@ -1,8 +1,17 @@
-<div>
-    <div ui-view="title"></div>
-    <div ui-view="navbar"></div>
-    <div ui-view="subnavbar"></div>
-</div>
-<div>
-    <div ui-view="body"></div>
+<div class="swl-navbar-menu">
+    <div class="valign-wrapper swl-navbar-menu-left flex3 flex">
+        <div class="fa fa-folder-o flex1 swl-navbar-button cursor"></div>
+        <div class="fa fa-calendar flex1 swl-navbar-button cursor"></div>
+        <div class="fa fa-info-circle flex1 swl-navbar-button cursor"></div>
+    </div>
+    <div class="valign-wrapper flex1">
+        <div class="valign fullWidth">
+            {{ vm.date | date:'dd/MM/yyyy' }}
+        </div>
+    </div><div class="valign-wrapper swl-navbar-menu-right flex3 flex">
+        <i class="fa fa-retweet flex3 swl-navbar-button cursor" ng-click="vm.sync()"></i>
+        <div class="swl-header-logo flex1">
+            <img src="assets/Logo_Swiss_Life.png" />
+        </div>
+    </div>
 </div>

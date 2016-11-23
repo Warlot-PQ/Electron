@@ -1,8 +1,20 @@
-<h3><b><u>Liste des clients :</u></b></h3>
-<div class="row">
-    <!-- Modal Trigger -->
-    <a class='btn' ng-click="vm.synchronise()">Synchroniser</a> <a class='btn' ng-click="vm.drop()">Effacer</a>
+<div class="flexMidle">
+    <div class="flex swl-dashboard-menu-wrapper">
+        <div class="btn swl-dashboard-menu-item">
+            Particulier
+        </div>
+        <div class="btn swl-dashboard-menu-item">
+            professionnel
+        </div>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col s12">
+        <h2>Client list</h2>
+    </div>
+</div>
+
 <div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
     <div ng-repeat="(indexItem, item) in itemGroup">
         <div class="col s{{12 / vm.itemsPerRow}}">
@@ -18,6 +30,8 @@
                         <div class="col s2 swl-border swl-right">
                             13:10
                         </div><div class="col s6 swl-border swl-right">
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
                             {{item.uuid}}
                             {{item.firstName}} {{item.lastName}}
                             {{item.company}} {{item.workPosition}}
@@ -31,5 +45,11 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12">
+        <a class='btn' ng-click="vm.clearClients()">Effacer</a>
     </div>
 </div>

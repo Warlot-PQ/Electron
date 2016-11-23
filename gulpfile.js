@@ -25,10 +25,13 @@ const _file = {
     js: _templateBase + '/**/*.js'
 };
 
+gulp.task('copy-assets', function () {
+    return gulp.src('app/assets/*')
+        .pipe(gulp.dest('dist/app/assets'));
+});
+
 gulp.task('injectors', function() {
     let target = gulp.src(_file.indexHtml);
-
-    //TODO:pq inject controller, directive, model
 
     return target
         .pipe(inject(gulp.src('dist/app/css/all.css'), {starttag: '<!-- scss:{{ext}} -->', ignorePath: 'dist/app', addRootSlash: false}))
@@ -74,7 +77,7 @@ gulp.task('copy-js', function() {
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'tmp1', 'tmp2');
+    return runSequence('copy-assets', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'tmp1', 'tmp2');
 });
 
 gulp.task('tmp1', function() {

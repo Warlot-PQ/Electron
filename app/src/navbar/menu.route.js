@@ -7,18 +7,18 @@
       .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('menu', {
           url: '/menu',
+          abstract: true,
           views: {
-            '': {
-              templateUrl: _templateBase + '/navbar/menu.html'
+            'title@': {
+              templateUrl: _templateBase + '/navbar/title.html'
             },
-            'title': {
-              template: 'Home'
+            'menu@': {
+              templateUrl: _templateBase + '/navbar/menu.html',
+              controller:  'menuController',
+              controllerAs: 'vm'
             },
-            'navbar': {
-              template: '<h1>navBar</h1>'
-            },
-            'subnavbar': {
-              template: '<h2>navBar</h2>'
+            'submenu@': {
+              templateUrl: _templateBase + '/navbar/subMenu.html'
             }
           }
         });

@@ -1,6 +1,16 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: lavenderblush;
+    font-family: stationery;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.cursor {
+    cursor: pointer;
 }
 
 .app-nav {
