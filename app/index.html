@@ -40,7 +40,13 @@
       <div ui-view="body"></div>
     </div>
   </body>
-  <script src="lib/jquery/dist/jquery.min.js" onload="window.$ = window.jQuery = module.exports;"></script>
+  <script>
+    let jQueryImport;
+    if (typeof module !== "undefined") {
+      jQueryImport = 'onload="window.$ = window.jQuery = module.exports;"';
+    }
+    document.write('<script src="lib/jquery/dist/jquery.min.js" ' + jQueryImport +  '><\/script>');
+  </script>
   <script src="assets/hammer.min.js"></script> <!-- Fix materialize missing librairy -->
   <script src="lib/materialize/dist/js/materialize.min.js"></script>
   <script src="lib/angular/angular.min.js"></script>

@@ -6,7 +6,7 @@
   angular.module('app')
       .controller('dashboardController', ['clientFactory', dashboardController]);
 
-  function dashboardController(clientFactory) {
+  function dashboardController(clientFactory, $location) {
     const _clientFactory = clientFactory;
 
     let vm = this;

@@ -6,7 +6,9 @@
   angular.module('app')
       .controller('clientFormController', ['clientFactory', clientFormController]);
 
-  const uuid = require('uuid');
+  const uuid = function () {
+    return 43;
+  };
 
   function clientFormController(clientFactory) {
     const _clientFactory = clientFactory;

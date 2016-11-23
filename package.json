@@ -4,7 +4,10 @@
   "description": "A minimal application using Electron and AngularJS. \n Based on https://github.com/electron/electron-quick-start.",
   "main": "app/main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package": "electron-packager . --all",
+    "run": "http-server -a localhost -p 8000 -c-1 ./dist/app",
+    "dist": "electron-packager ./dist/ --platform=linux --arch=x64"
   },
   "repository": "",
   "keywords": [
@@ -20,6 +23,8 @@
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.18.2",
     "electron": "^1.4.1",
+    "electron-builder": "^8.6.0",
+    "electron-packager": "^8.3.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-debug": "^3.0.0",
@@ -33,11 +38,21 @@
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
+    "protractor": "^4.0.11",
     "run-sequence": "^1.2.2",
     "uuid": "^3.0.0"
   },
   "dependencies": {
     "electron-prebuilt": "^1.4.6",
     "wiredep": "^4.0.0"
+  },
+  "build": {
+    "appId": "hr.creaticon.eatodo",
+    "app-category-type": "public.app-category.productivity",
+    "dmg": {
+    },
+    "win": {
+      "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
+    }
   }
 }
