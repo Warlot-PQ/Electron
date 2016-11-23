@@ -1,16 +1,13 @@
 /**
- * Created by jscarella on 21/11/16.
+ * Created by jscarella on 22/11/16.
  */
-class ClientApp {
-  constructor(uuid, firstName, lastName, option, brand) {
-    this.uuid = uuid;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.option = option;
-    this.brand = brand;
-  }
+class IDBTableApp {
 
-  toString() {
-    return `Client [id = ${this.uuid}, firstName = ${this.firstName}, lastName = ${this.lastName}, option = ${this.option}, brand = ${this.brand}]`;
+  constructor(keyPath, objectStoreName, objectStoreVersion, indexes, dataset) {
+    this.keyPath = keyPath;
+    this.objectStoreName = objectStoreName;
+    this.objectStoreVersion = objectStoreVersion;
+    this.indexes = indexes;
+    this.dataset = dataset;
   }
 }

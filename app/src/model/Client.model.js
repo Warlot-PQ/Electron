@@ -1,7 +1,7 @@
 /**
  * Created by jscarella on 22/11/16.
  */
-class NewClientApp {
+class ClientApp {
 
   constructor(uuid, title, firstName, lastName, company, workPosition, address, phoneNumber, children) {
     this.uuid = uuid;

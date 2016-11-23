@@ -6,20 +6,31 @@
   angular.module('app')
       .controller('clientFormController', ['IndexedDB', clientFormController]);
 
+  const keyPath = "uuid";
+  const objectStoreName = "clients";
+  const objectStoreVersion = 1;
+  const indexes = [{name: "by_name", column: "lastName", option: {unique: false}}];
+  const uuid = require('uuid');
+  const dataset = [
+    {uuid: uuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
+    {uuid: uuid(), title: "Monsieur", firstName: "Pierre-Quentin", lastName: "Warlot", company: "eBusiness Information", workPosition: "Consultant", address: "94230", phoneNumber: "0687654321", children: false}
+  ];
+  const idbTable = new IDBTableApp(keyPath, objectStoreName, objectStoreVersion, indexes, dataset);
+
   function clientFormController(IndexedDB) {
     let ctx = this;
 
     ctx.title = {
-      "valueSelected": "Monsieur",
+      "valueSelected": "",
       "choices": ["", "Monsieur", "Madame"]
     };
     ctx.input = {
-      "firstName": "Jérémy",
-      "lastName": "Scarella",
-      "company": "Ebiz",
-      "workPosition": "Dev",
-      "address": "75020",
-      "phoneNumber": "0635578959",
+      "firstName": "",
+      "lastName": "",
+      "company": "",
+      "workPosition": "",
+      "address": "",
+      "phoneNumber": "",
       "children": ""
     };
     // Error data about each input
@@ -87,14 +98,13 @@
       }
 
       // Save data
-      let newClient = new NewClientApp(title, firstName, lastName, company, workPosition, address, phoneNumber, children);
-//      let promise = IndexedDB.save(newClient);
-//      promise.then(function (data) {
-//        showSuccessMessage(data);
-//      }, function (error) {
-//        console.log(error);
-//      });
-        showSuccessMessage(newClient);
+      let newClient = new ClientApp(uuid(), title, firstName, lastName, company, workPosition, address, phoneNumber, children);
+      let promise = IndexedDB.save(idbTable, newClient);
+      promise.then(function (data) {
+        showSuccessMessage(data);
+      }, function (error) {
+        console.log(error);
+      });
 
       // Open the modal
       $('.modal').modal('open');

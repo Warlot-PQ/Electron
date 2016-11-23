@@ -1,7 +1,7 @@
-<h3><b><u>Client list:</u></b></h3>
+<h3><b><u>Liste des clients :</u></b></h3>
 <div class="row">
     <!-- Modal Trigger -->
-    <a class='btn' ng-click="vm.synchroniseDB()">Synchronise DB</a> <a class='btn' ng-click="vm.dropDB()">Drop DB</a>
+    <a class='btn' ng-click="vm.synchronise()">Synchroniser</a> <a class='btn' ng-click="vm.drop()">Effacer</a>
 </div>
 <div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
     <div ng-repeat="(indexItem, item) in itemGroup">
@@ -18,38 +18,14 @@
                         <div class="col s2 swl-border swl-right">
                             13:10
                         </div><div class="col s6 swl-border swl-right">
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
                             {{item.uuid}}
                             {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
+                            {{item.company}} {{item.workPosition}}
+                            {{item.address}}
+                            {{item.phoneNumber}}
+                            {{item.children}}
                         </div><div class="col s4">
-                            {{item.brand}}
+                            Test
                         </div>
                     </div>
                 </div>
