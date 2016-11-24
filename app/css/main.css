@@ -27,6 +27,10 @@ body {
     text-align: center;
 }
 
+.inlineBlock {
+    display: inline-block;
+}
+
 .app-nav {
     height: 50px;
     background-color: #e1e3e4;

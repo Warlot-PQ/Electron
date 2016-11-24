@@ -7,7 +7,7 @@
       .factory('clientFactory', ['IndexedDB', clientFactory]);
 
   const uuid = function () {
-    return 43;
+    return Math.floor(Math.random() * 100);
   };
   const dataset = [
     {uuid: uuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
