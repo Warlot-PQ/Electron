@@ -9,6 +9,7 @@ const concat = require('gulp-concat');
 const debug = require('gulp-debug');
 const runSequence = require('run-sequence');
 const os = require('os');
+const electronInstaller = require('electron-winstaller');
 
 const _templateBase = 'app';
 const _file = {
@@ -90,7 +91,7 @@ gulp.task('copy-js', function() {
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'lauchApp');
+    return runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'launchApp');
 });
 
 gulp.task('copy-package', function() {
@@ -99,7 +100,7 @@ gulp.task('copy-package', function() {
     .pipe(livereload()); // Copy package.json to enable Electron app launching
 });
 
-gulp.task('lauchApp', function() {
+gulp.task('launchApp', function() {
 	if (os.platform() == 'win32') {
    		return run('./node_modules/.bin/electron dist/').exec();
 	} else {
@@ -118,3 +119,15 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['watch', 'run']);
+
+gulp.task('msi', function () {
+resultPromise = electronInstaller.createWindowsInstaller({
+appDirectory: 'angular_electron_prototype-win32-x64/',
+outputDirectory: 'installer64',
+authors: 'eBusiness Information',
+noMsi: false,
+exe: 'angular_electron_prototype.exe'
+});
+
+return resultPromise.then(() => console.log("It worked!"), (e) => console.log(`Error: ${e.message}`));
+});
