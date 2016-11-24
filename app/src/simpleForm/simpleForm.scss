@@ -1,0 +1,12 @@
+.swl-info-bulle-button {
+  font-size: 23px;
+  color: dimgrey;
+  text-shadow: 0.5px .5px black;
+}
+
+.swl-info-bulle {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height linear 0.8s; /* For Safari 3.1 to 6.0 */
+  transition: max-height linear 0.8s;
+}

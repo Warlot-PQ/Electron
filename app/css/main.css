@@ -17,7 +17,6 @@ body {
     text-align: left;
 }
 
-
 .textAlignRight {
     text-align: right;
 }
@@ -29,6 +28,27 @@ body {
 
 .inlineBlock {
     display: inline-block;
+}
+
+.flexMidle {
+    display: flex;
+    justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex1 {
+    flex: 1;
+}
+
+.flex3 {
+    flex: 3;
+}
+
+.flex8 {
+    flex: 8;
 }
 
 .app-nav {
@@ -92,4 +112,8 @@ body {
 
 .save-button {
     text-align: center;
+}
+
+.valign-wrapper {
+    justify-content: center;
 }

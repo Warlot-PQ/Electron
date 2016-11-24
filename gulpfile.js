@@ -21,6 +21,7 @@ const _file = {
     service: _templateBase + '/src/**/*.service.js',
     model: _templateBase + '/src/**/*.model.js',
     indexHtml: _templateBase + '/index.html',
+    scripts: _templateBase + '/scripts/**/*',
     conf: _templateBase + '/env/**/*',
     i18n: _templateBase + '/i18n/**/*',
     html: _templateBase + '/**/*.html',
@@ -61,6 +62,11 @@ gulp.task('copyCssSources', function() {
         .pipe(gulp.dest('dist/app/css/'));
 });
 
+gulp.task('copy-scripts', function() {
+    return gulp.src(_file.scripts)
+        .pipe(gulp.dest('dist/app/scripts/'));
+});
+
 gulp.task('copy-conf', function() {
     return gulp.src(_file.conf)
         .pipe(gulp.dest('dist/app/env/'));
@@ -91,7 +97,7 @@ gulp.task('copy-js', function() {
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'launchApp');
+    return runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-scripts', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'launchApp');
 });
 
 gulp.task('copy-package', function() {
@@ -119,15 +125,3 @@ gulp.task('watch', function () {
 });
 
 gulp.task('default', ['watch', 'run']);
-
-gulp.task('msi', function () {
-resultPromise = electronInstaller.createWindowsInstaller({
-appDirectory: 'angular_electron_prototype-win32-x64/',
-outputDirectory: 'installer64',
-authors: 'eBusiness Information',
-noMsi: false,
-exe: 'angular_electron_prototype.exe'
-});
-
-return resultPromise.then(() => console.log("It worked!"), (e) => console.log(`Error: ${e.message}`));
-});
