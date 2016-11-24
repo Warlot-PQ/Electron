@@ -20,7 +20,8 @@ const _file = {
     service: _templateBase + '/src/**/*.service.js',
     model: _templateBase + '/src/**/*.model.js',
     indexHtml: _templateBase + '/index.html',
-    conf: _templateBase + '/env/**',
+    conf: _templateBase + '/env/**/*',
+    i18n: _templateBase + '/i18n/**/*',
     html: _templateBase + '/**/*.html',
     sass: _templateBase + '/**/*.scss',
     css: _templateBase + '/**/*.css',
@@ -61,30 +62,35 @@ gulp.task('copyCssSources', function() {
 
 gulp.task('copy-conf', function() {
     return gulp.src(_file.conf)
-        .pipe(gulp.dest('dist/app'));
+        .pipe(gulp.dest('dist/app/env/'));
+});
+
+gulp.task('copy-i18n', function() {
+    return gulp.src(_file.i18n)
+        .pipe(gulp.dest('dist/app/i18n/'));
 });
 
 gulp.task('copy-html', function() {
     return gulp.src(_file.html)
     // Perform minification tasks, etc here
-    .pipe(gulp.dest('dist/app'));
+    .pipe(gulp.dest('dist/app/'));
 });
 
 gulp.task('copy-css', function() {
     return gulp.src(_file.css)
     // Perform minification tasks, etc here
-    .pipe(gulp.dest('dist/app'));
+    .pipe(gulp.dest('dist/app/'));
 });
 
 gulp.task('copy-js', function() {
     return gulp.src(_file.js)
     .pipe(babel({presets: ['es2015']}))
-    .pipe(gulp.dest('dist/app'))
+    .pipe(gulp.dest('dist/app/'))
 });
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-assets', 'copy-conf', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'lauchApp');
+    return runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'lauchApp');
 });
 
 gulp.task('copy-package', function() {

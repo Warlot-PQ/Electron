@@ -28,7 +28,8 @@
         clientIndexes: conf.clientIndexes
       };
     })
-    .config(['$stateProvider', function ($stateProvider, $urlRouterProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+      $urlRouterProvider.otherwise('/menu/dashboard');
       $stateProvider.state('welcome', {
         url: '/welcome',
         views: {
@@ -59,6 +60,5 @@
         }
       }
 	  });
-    //$urlRouterProvider.otherwise('/');
     }]);
 })();
