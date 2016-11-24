@@ -102,7 +102,7 @@ gulp.task('copy-package', function() {
 
 gulp.task('launchApp', function() {
 	if (os.platform() == 'win32') {
-   		return run('./node_modules/.bin/electron dist/').exec();
+   		return run('.\\node_modules\\.bin\\electron dist/').exec();
 	} else {
 		return run('./node_modules/.bin/electron dist/').exec();
 	}
