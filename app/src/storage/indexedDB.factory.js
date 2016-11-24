@@ -4,13 +4,14 @@
 (function () {
   'use strict';
   angular.module('app')
-  .factory('IndexedDB', ['$q', '$window', indexedDBFactory]);
+  .factory('IndexedDB', ['$rootScope', '$q', '$window', indexedDBFactory]);
 
-  const keyPath = "uuid";
-  const objectStoreVersion = 1;
-  const clientIndexes = [{name: "by_name", column: "lastName", option: {unique: false}}];
+  function indexedDBFactory($rootScope, $q, $window) {
+    const _dbName = $rootScope.conf.dbName;
+    const _keyPath = $rootScope.conf.keyPath;
+    const _objectStoreVersion = $rootScope.conf.objectStoreVersion;
+    const _clientIndexes = $rootScope.conf.clientIndexes;
 
-  function indexedDBFactory($q, $window) {
     return {
       relations: {
         clients: 'clients'
@@ -21,7 +22,7 @@
     };
 
     function drop() {
-      let deletion = $window.indexedDB.deleteDatabase('Proto');
+      let deletion = $window.indexedDB.deleteDatabase(_dbName);
       deletion.onsuccess = function () {
         console.log("Deletion success.");
       };
@@ -44,14 +45,14 @@
         console.log("This browser supports indexedDB.");
       }
 
-      let request = $window.indexedDB.open('Proto', objectStoreVersion);
+      let request = $window.indexedDB.open(_dbName, _objectStoreVersion);
 
       request.onupgradeneeded = function(e) {
         console.log("DB initialising...");
         // The database did not previously exist, so create object stores and fileIndexes.
         let db = e.target.result;
-        let store = db.createObjectStore(tableName, {keyPath: keyPath});
-        for (let index of clientIndexes) {
+        let store = db.createObjectStore(tableName, {keyPath: _keyPath});
+        for (let index of _clientIndexes) {
           store.createIndex(index.name, index.column, index.option);
         }
 
@@ -116,7 +117,7 @@
             var store = tx.objectStore(tableName);
             var addRequest = store.add(data);
 
-            addRequest.onsuccess = function (event) {
+            addRequest.onsuccess = function () {
                 console.log("Save done.");
                 promise.resolve(data);
             };

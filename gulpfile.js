@@ -20,6 +20,7 @@ const _file = {
     service: _templateBase + '/src/**/*.service.js',
     model: _templateBase + '/src/**/*.model.js',
     indexHtml: _templateBase + '/index.html',
+    conf: _templateBase + '/env/**',
     html: _templateBase + '/**/*.html',
     sass: _templateBase + '/**/*.scss',
     css: _templateBase + '/**/*.css',
@@ -58,6 +59,11 @@ gulp.task('copyCssSources', function() {
         .pipe(gulp.dest('dist/app/css/'));
 });
 
+gulp.task('copy-conf', function() {
+    return gulp.src(_file.conf)
+        .pipe(gulp.dest('dist/app'));
+});
+
 gulp.task('copy-html', function() {
     return gulp.src(_file.html)
     // Perform minification tasks, etc here
@@ -78,24 +84,22 @@ gulp.task('copy-js', function() {
 
 gulp.task('run', function() {
     gulp.watch("js/*.js", ['js-watch']);
-    return runSequence('copy-assets', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'tmp1', 'tmp2');
+    return runSequence('copy-assets', 'copy-conf', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package', 'lauchApp');
 });
 
-gulp.task('tmp1', function() {
+gulp.task('copy-package', function() {
     return gulp.src('package.json').pipe(gulp.dest('dist/'))
     // Notify changes
     .pipe(livereload()); // Copy package.json to enable Electron app launching
 });
 
-if (os.platform() == 'win32') {
-gulp.task('tmp2', function() {
-    return run('.\\node_modules\\.bin\\electron dist/').exec();
+gulp.task('lauchApp', function() {
+	if (os.platform() == 'win32') {
+   		return run('./node_modules/.bin/electron dist/').exec();
+	} else {
+		return run('./node_modules/.bin/electron dist/').exec();
+	}
 });
-} else {
-	gulp.task('tmp2', function() {
-    return run('./node_modules/.bin/electron dist/').exec();
-});
-}
 
 gulp.task('watch', function () {
 	  // Start a livereload server

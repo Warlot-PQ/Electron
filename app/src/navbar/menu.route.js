@@ -10,7 +10,9 @@
           abstract: true,
           views: {
             'title@': {
-              templateUrl: _templateBase + '/navbar/title.html'
+              templateUrl: _templateBase + '/navbar/title.html',
+              controller: 'titleController',
+              controllerAs: 'vm'
             },
             'menu@': {
               templateUrl: _templateBase + '/navbar/menu.html',
