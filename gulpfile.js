@@ -8,6 +8,7 @@ const inject = require('gulp-inject')
 const concat = require('gulp-concat');
 const debug = require('gulp-debug');
 const runSequence = require('run-sequence');
+const os = require('os');
 
 const _templateBase = 'app';
 const _file = {
@@ -86,9 +87,15 @@ gulp.task('tmp1', function() {
     .pipe(livereload()); // Copy package.json to enable Electron app launching
 });
 
+if (os.platform() == 'win32') {
 gulp.task('tmp2', function() {
+    return run('.\\node_modules\\.bin\\electron dist/').exec();
+});
+} else {
+	gulp.task('tmp2', function() {
     return run('./node_modules/.bin/electron dist/').exec();
 });
+}
 
 gulp.task('watch', function () {
 	  // Start a livereload server
