@@ -2,10 +2,28 @@ describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
     browser.get('http://localhost:8000/#/menu/dashboard');
 
-
+    // Test nav bar title
     element(by.id('title-home')).getText().then(function (text) {
-      console.log(text);
+      expect(text).toEqual('Home');
     });
+
+    // Erase all tile
+    element(by.id('dashboard-clear-all')).click();
+
+    // Test tile number
+    expect(
+        element.all(by.css('.swl-tile')).count())
+        .toEqual(0);
+
+    // Synchro all tile
+    element(by.id('dashboard-sync-all')).click();
+
+    // Test tile number
+    expect(
+        element.all(by.css('.swl-tile')).count())
+        .toEqual(1);
+
+
 
     /*
     var todoList = element.all(by.repeater('todo in todoList.todos'));
@@ -17,7 +35,5 @@ describe('angularjs homepage todo list', function() {
     var completedAmount = element.all(by.css('.done-true'));
     expect(completedAmount.count()).toEqual(2);
     */
-
-
   });
 });
