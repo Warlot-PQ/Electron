@@ -1,13 +1,15 @@
 {
-  "name": "angular-electron-prototype",
-  "version": "1.0.0",
+  "name": "angular_electron_prototype",
+  "version": "0.0.1",
   "description": "A minimal application using Electron and AngularJS. \n Based on https://github.com/electron/electron-quick-start.",
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
+    "dist": "build --win32 --x64",
     "package": "electron-packager . --all",
     "run": "http-server -a localhost -p 8000 -c-1 ./dist/app",
-    "dist": "electron-packager ./dist/ --platform=linux --arch=x64"
+    "linux64": "electron-packager ./dist/ --platform=linux --arch=x64",
+    "win64": "electron-packager ./dist/ --platform=win32 --arch=x64"
   },
   "repository": "",
   "keywords": [
@@ -25,6 +27,8 @@
     "electron": "^1.4.1",
     "electron-builder": "^8.6.0",
     "electron-packager": "^8.3.0",
+    "electron-prebuilt": "^1.4.8",
+    "electron-winstaller": "^2.4.1",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-debug": "^3.0.0",
@@ -43,11 +47,11 @@
     "uuid": "^3.0.0"
   },
   "dependencies": {
-    "electron-prebuilt": "^1.4.6",
+    "electron-prebuilt": "^1.4.8",
     "wiredep": "^4.0.0"
   },
   "build": {
-    "appId": "hr.creaticon.eatodo",
+    "appId": "fr.ebusinessinformation.electron.proto",
     "app-category-type": "public.app-category.productivity",
     "dmg": {
     },
