@@ -111,7 +111,7 @@
     function save(tableName, data) {
         var promise = $q.defer();
 
-        init(function (db, promise) {
+        init(function (db, promise, tableName) {
             console.log("Saving...");
             var tx = db.transaction([tableName], IDBTransaction.READ_WRITE ? IDBTransaction.READ_WRITE : 'readwrite');
             var store = tx.objectStore(tableName);

@@ -4,16 +4,17 @@
 (function () {
   'use strict';
   angular.module('app')
-      .controller('simpleFormController', ['IndexedDB', simpleFormController]);
+      .controller('simpleFormController', ['clientFactory', simpleFormController]);
 
-  function simpleFormController(IndexedDB) {
-    let ctx = this;
+  function simpleFormController(clientFactory) {
+    const _clientFactory = clientFactory;
+    let vm = this;
 
-    ctx.select = {
+    vm.select = {
       "valueSelected": "Option 1",
       "choices": ["Option 1", "Option 2", "Option 3"]
     };
-    ctx.input = {
+    vm.input = {
       "lastName": "",
       "firstName": "",
       "brand": {
@@ -22,11 +23,11 @@
       }
     };
     // Error data about each input
-    ctx.error = {};
+    vm.error = {};
     // Data displayed after "save it" button clicked
-    ctx.status = {};
+    vm.status = {};
 
-    ctx.getDataOpenModal = getDataOpenModal;
+    vm.getDataOpenModal = getDataOpenModal;
 
     activate();
 
@@ -39,40 +40,40 @@
     }
 
     function getDataOpenModal() {
-      let firstName = ctx.input.firstName;
-      let lastName = ctx.input.lastName;
-      let option = ctx.select.valueSelected;
-      let brand = ctx.input.brand.value;
-      let brandNotValid = ctx.input.brand.notValid;
+      let firstName = vm.input.firstName;
+      let lastName = vm.input.lastName;
+      let option = vm.select.valueSelected;
+      let brand = vm.input.brand.value;
+      let brandNotValid = vm.input.brand.notValid;
 
       if (!firstName) {
-        ctx.error.firstName = "Firstname cannot be empty!";
+        vm.error.firstName = "Firstname cannot be empty!";
         return;
       } else {
-        ctx.error.firstName = "";
+        vm.error.firstName = "";
       }
       if (!lastName) {
-        ctx.error.lastName = "Lastname cannot be empty!";
+        vm.error.lastName = "Lastname cannot be empty!";
         return;
       } else {
-        ctx.error.lastName = "";
+        vm.error.lastName = "";
       }
-      if (!option in ctx.select.choices) {
-        ctx.error.option = "Option cannot be empty!";
+      if (!option in vm.select.choices) {
+        vm.error.option = "Option cannot be empty!";
         return;
       } else {
-        ctx.error.option = "";
+        vm.error.option = "";
       }
       if (!brand || brandNotValid) {
-        ctx.error.brand = "Brand must be one of the given by the system!";
+        vm.error.brand = "Brand must be one of the given by the system!";
         return;
       } else {
-        ctx.error.brand = "";
+        vm.error.brand = "";
       }
 
       // Save data
       let newClient = new ClientApp(new Date().getTime(), firstName, lastName, option, brand);
-      let promise = IndexedDB.save(newClient);
+      let promise = clientFactory.add(newClient);
       promise.then(function (data) {
         showSuccessMessage(data);
       }, function (error) {
@@ -85,14 +86,14 @@
     }
 
     function showSuccessMessage(newClient) {
-      ctx.status = {
+      vm.status = {
         "title": "Success",
         "content": "Information successfully saved: new " + newClient.toString() + "."
       };
     }
 
     function showErrorMessage() {
-      ctx.status = {
+      vm.status = {
         "title": "Error",
         "content": "Something went wrong. Information not saved."
       };

@@ -35,7 +35,7 @@
           'body': {
             templateUrl: _templateBase + '/welcome/welcome.html' ,
             controller: 'welcomeController',
-            controllerAs: '_welContr'
+            controllerAs: 'vm'
           }
         }
       })
