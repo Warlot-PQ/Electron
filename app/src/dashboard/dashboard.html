@@ -11,39 +11,37 @@
 
 <div class="row">
     <div class="col s12">
-        <h2>Liste des dossiers</h2>
+        <h5>Liste des dossiers</h5>
     </div>
 </div>
 
 <div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
     <div class="swl-tile" ng-repeat="(indexItem, item) in itemGroup">
-        <div class="col s{{12 / vm.itemsPerRow}} textAlignCenter">
-            <div class="inlineBlock">
-                <div class="swl-type"></div>
-                <div class="card swl-card red lighten-1">
-                    <div class="card-content white-text swl-content">
-                        <div class="card-title row swl-header">
-                            <div class="col s3 fa fa-clock-o swl-border swl-right"></div>
-                            <div class="col s5 fa fa-address-card-o swl-border swl-right"></div>
-                            <div class="col s4 fa fa-pencil"></div>
+        <div class="col s{{12 / vm.itemsPerRow}} swl-card-wrapper">
+            <div class="swl-type"></div>
+            <div class="card swl-card red lighten-1">
+                <div class="card-content white-text swl-content">
+                    <div class="card-title row swl-header">
+                        <div class="col s3 fa fa-clock-o swl-border swl-right"></div>
+                        <div class="col s5 fa fa-address-card-o swl-border swl-right"></div>
+                        <div class="col s4 fa fa-pencil"></div>
+                    </div>
+                    <div class="row swl-body">
+                        <div class="col s3 swl-border swl-right">
+                            13:10
                         </div>
-                        <div class="row swl-body">
-                            <div class="col s3 swl-border swl-right">
-                                13:10
-                            </div>
-                            <div class="col s5 swl-border swl-right">
-                                {{item.firstName}} {{item.lastName}}
-                                {{item.option}}
-                                {{item.uuid}}
-                                {{item.firstName}} {{item.lastName}}
-                                {{item.company}} {{item.workPosition}}
-                                {{item.address}}
-                                {{item.phoneNumber}}
-                                {{item.children}}
-                            </div>
-                            <div class="col s4">
-                                Test
-                            </div>
+                        <div class="col s5 swl-border swl-right">
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.option}}
+                            {{item.uuid}}
+                            {{item.firstName}} {{item.lastName}}
+                            {{item.company}} {{item.workPosition}}
+                            {{item.address}}
+                            {{item.phoneNumber}}
+                            {{item.children}}
+                        </div>
+                        <div class="col s4">
+                            Test
                         </div>
                     </div>
                 </div>

@@ -13,18 +13,26 @@ $borderColor: white;
   }
 }
 
+.swl-card-wrapper {
+  display: flex;
+}
+
 .swl-type {
-  display: table-cell;
-  width: 10px;
+  flex: 1;
+  margin: 0.5rem 0 1rem 0;
   background-color: green;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .swl-card {
-  display: table-cell;
+  flex: 35;
   padding: 8px;
+  .card-content {
+
+  }
   .swl-content {
     overflow: hidden;
-    max-height: 200px;
     padding: 0;
   }
   .swl-header {
@@ -36,6 +44,7 @@ $borderColor: white;
     }
   }
   .swl-body {
+    height: 100px;
     text-align: center;
     display: flex;
     div {
