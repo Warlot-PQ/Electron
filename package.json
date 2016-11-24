@@ -5,11 +5,11 @@
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "build --win32 --x64",
     "package": "electron-packager . --all",
     "run": "http-server -a localhost -p 8000 -c-1 ./dist/app",
     "linux64": "electron-packager ./dist/ --platform=linux --arch=x64",
-    "win64": "electron-packager ./dist/ --platform=win32 --arch=x64"
+    "win64": "electron-packager ./dist/ --platform=win32 --arch=x64",
+    "msi": "gulp msi"
   },
   "repository": "",
   "keywords": [

@@ -115,13 +115,30 @@ gulp.task('launchApp', function() {
 });
 
 gulp.task('watch', function () {
-	  // Start a livereload server
-    livereload.listen();
-    // Watch files
-    gulp.watch(_file.html, ['run']);
-    gulp.watch(_file.css, ['run']);
-    gulp.watch(_file.sass, ['run']);
-    gulp.watch(_file.js, ['run']);
+  // Start a livereload server
+  livereload.listen();
+  // Watch files
+  gulp.watch(_file.html, ['run']);
+  gulp.watch(_file.css, ['run']);
+  gulp.watch(_file.sass, ['run']);
+  gulp.watch(_file.js, ['run']);
 });
 
 gulp.task('default', ['watch', 'run']);
+
+gulp.task('dist', function() {
+  gulp.watch("js/*.js", ['js-watch']);
+  runSequence('copy-assets', 'copy-conf', 'copy-i18n', 'copy-html', 'copy-css', 'copy-js', 'copyBowerSources', 'copyCssSources', 'injectors', 'copy-package');
+});
+
+gulp.task('msi', function () {
+  resultPromise = electronInstaller.createWindowsInstaller({
+    appDirectory: 'angular_electron_prototype-win32-x64/',
+    outputDirectory: 'installer64',
+    authors: 'eBusiness Information',
+    noMsi: false,
+    exe: 'angular_electron_prototype.exe'
+  });
+
+  return resultPromise.then(() => console.log("Msi generation worked!"), (e) => console.log(`Error: ${e.message}`));
+});
