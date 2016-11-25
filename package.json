@@ -1,5 +1,5 @@
 {
-  "name": "angular_electron_prototype",
+  "name": "SwissLife_Angular_Electron_Prototype",
   "version": "0.0.1",
   "description": "A minimal application using Electron and AngularJS. \n Based on https://github.com/electron/electron-quick-start.",
   "main": "app/main.js",
@@ -51,12 +51,12 @@
     "wiredep": "^4.0.0"
   },
   "build": {
-    "appId": "fr.ebusinessinformation.electron.proto",
+    "appId": "fr.ebusinessinformation.angular.electron.prototype",
     "app-category-type": "public.app-category.productivity",
     "dmg": {
     },
     "win": {
-      "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
+      "iconUrl": "http://www.swisslife.fr/extension/mcms/design/mcms/images/icon/favicon.ico"
     }
   }
 }

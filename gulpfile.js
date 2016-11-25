@@ -133,16 +133,16 @@ gulp.task('dist', function() {
 
 gulp.task('msi', function () {
   resultPromise = electronInstaller.createWindowsInstaller({
-    appDirectory: 'angular_electron_prototype-win32-x64/',
+    appDirectory: 'SwissLife_Angular_Electron_Prototype-win32-x64/',
     loadingGif: 'icons/logo.gif',
     iconUrl: 'http://www.swisslife.fr/extension/mcms/design/mcms/images/icon/favicon.ico',
     setupIcon: 'icons/favicon.ico',
-    setupExe: 'Angular Electron Prototype.exe',
-    setupMsi: 'Angular Electron Prototype.msi',
+    setupExe: 'SwissLife_Angular_Electron_Prototype.exe',
+    setupMsi: 'SwissLife_Angular_Electron_Prototype.msi',
     outputDirectory: 'installer64',
     authors: 'eBusiness Information',
     noMsi: false,
-    exe: 'angular_electron_prototype.exe'
+    exe: 'SwissLife_Angular_Electron_Prototype.exe'
   });
 
   return resultPromise.then(() => console.log("Msi generation worked!"), (e) => console.log(`Error: ${e.message}`));
