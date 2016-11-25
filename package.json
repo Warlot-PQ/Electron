@@ -41,6 +41,7 @@
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-html-reporter": "^0.2.7",
     "karma-jasmine": "^1.0.2",
     "protractor": "^4.0.11",
     "run-sequence": "^1.2.2",
@@ -53,8 +54,7 @@
   "build": {
     "appId": "fr.ebusinessinformation.electron.proto",
     "app-category-type": "public.app-category.productivity",
-    "dmg": {
-    },
+    "dmg": {},
     "win": {
       "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
     }

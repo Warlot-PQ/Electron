@@ -16,6 +16,7 @@
       relations: {
         clients: 'clients'
       },
+      dbName: 'test',
       drop: drop,
       readAll: readAll,
       save: save

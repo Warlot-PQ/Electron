@@ -16,8 +16,27 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
         'bower_components/angular/angular.js',
-        'bower_components/angular/angular-mocks.js',
-        'app/src/**/*.js'
+        'bower_components/angular-route/angular-route.js',
+        'bower_components/angular-ui-router/release/angular-ui-router.js',
+        'bower_components/angular-sanitize/angular-sanitize.js',
+        'bower_components/angular-cookies/angular-cookies.js',
+        'bower_components/angular-mocks/angular-mocks.js',
+        'bower_components/jquery/dist/jquery.min.js',
+        'bower_components/materialize/dist/js/materialize.min.js',
+        'bower_components/angular-materialize/src/angular-materialize.js',
+        'bower_components/angular-i18n-module/angular-i18n-module.js',
+
+        'app/scripts/*.js',
+        'app/env/*.js',
+        'app/src/*.js',
+
+        'app/src/**.model.js',
+        'app/src/**/*.controller.js',
+        'app/src/**/*.service.js',
+        'app/src/**/*.factory.js',
+
+        // 'app/src/**/*.js',
+        'test/**/*.spec.js'
     ],
 
 
@@ -57,7 +76,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chromium'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
