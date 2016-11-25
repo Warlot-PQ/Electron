@@ -6,12 +6,9 @@
   angular.module('app')
       .factory('clientFactory', ['IndexedDB', clientFactory]);
 
-  const uuid = function () {
-    return Math.floor(Math.random() * 100);
-  };
   const dataset = [
-    {uuid: uuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
-    {uuid: uuid(), title: "Monsieur", firstName: "Pierre-Quentin", lastName: "Warlot", company: "eBusiness Information", workPosition: "Consultant", address: "94230", phoneNumber: "0687654321", children: false}
+    {uuid: guuid(), title: "Monsieur", firstName: "Jeremy", lastName: "Scarella", company: "eBusiness Information", workPosition: "Consultant", address: "75020", phoneNumber: "0612345678", children: false},
+    {uuid: guuid(), title: "Monsieur", firstName: "Pierre-Quentin", lastName: "Warlot", company: "eBusiness Information", workPosition: "Consultant", address: "94230", phoneNumber: "0687654321", children: false}
   ];
   
   function clientFactory(IndexedDB) {
