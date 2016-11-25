@@ -134,6 +134,11 @@ gulp.task('dist', function() {
 gulp.task('msi', function () {
   resultPromise = electronInstaller.createWindowsInstaller({
     appDirectory: 'angular_electron_prototype-win32-x64/',
+    loadingGif: 'icons/logo.gif',
+    iconUrl: 'http://www.swisslife.fr/extension/mcms/design/mcms/images/icon/favicon.ico',
+    setupIcon: 'icons/favicon.ico',
+    setupExe: 'Angular Electron Prototype.exe',
+    setupMsi: 'Angular Electron Prototype.msi',
     outputDirectory: 'installer64',
     authors: 'eBusiness Information',
     noMsi: false,
