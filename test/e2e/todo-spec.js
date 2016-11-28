@@ -1,11 +1,11 @@
 describe('angularjs homepage todo list', function() {
   it('should add a todo', function() {
     browser.get('http://localhost:8000/#/menu/dashboard');
-
-    // Test nav bar title
-    element(by.id('title-home')).getText().then(function (text) {
-      expect(text).toEqual('Home');
-    });
+    //
+    // // Test nav bar title
+    // element(by.id('title-home')).getText().then(function (text) {
+    //   expect(text).toEqual('Home');
+    // });
 
     // Erase all tile
     element(by.id('dashboard-clear-all')).click();
