@@ -1,3 +1,4 @@
+<!--
 <div class="flexMidle">
     <div class="flex swl-dashboard-menu-wrapper">
         <div class="btn swl-dashboard-menu-item">
@@ -8,39 +9,44 @@
         </div>
     </div>
 </div>
+-->
 
-<div class="row">
-    <div class="col s12">
-        <h5>Liste des dossiers</h5>
-    </div>
-</div>
-
-<div ng-repeat="(indexItemGroup, itemGroup) in vm.items" class="row">
+<div ng-repeat="(indexItemGroup, itemGroup) in vm.items">
     <div class="swl-tile" ng-repeat="(indexItem, item) in itemGroup">
-        <div class="col s{{12 / vm.itemsPerRow}} swl-card-wrapper">
+        <div class="swl-tile-wrapper">
             <div class="swl-type"></div>
-            <div class="card swl-card red lighten-1">
-                <div class="card-content white-text swl-content">
-                    <div class="card-title row swl-header">
-                        <div class="col s3 fa fa-clock-o swl-border swl-right"></div>
-                        <div class="col s5 fa fa-address-card-o swl-border swl-right"></div>
-                        <div class="col s4 fa fa-pencil"></div>
+            <div class="swl-card-wrapper">
+                <div class="swl-card">
+                    <div class="swl-card-header">
+                        <div class="swl-card-header-item1 fa fa-clock-o"></div>
+                        <div class="swl-card-header-item2 fa fa-address-card-o"></div>
+                        <div class="swl-card-header-item3 fa fa-pencil"></div>
                     </div>
-                    <div class="row swl-body">
-                        <div class="col s3 swl-border swl-right">
-                            13:10
+                    <div class="swl-card-body">
+                        <div class="swl-card-body-item1 valign-wrapper">
+                            <div class="valign margin0 padding0">
+                                13:10
+                            </div>
                         </div>
-                        <div class="col s5 swl-border swl-right">
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.option}}
-                            {{item.uuid}}
-                            {{item.firstName}} {{item.lastName}}
-                            {{item.company}} {{item.workPosition}}
-                            {{item.address}}
-                            {{item.phoneNumber}}
-                            {{item.children}}
+                        <div class="swl-card-body-item2">
+                            <div>
+                                <div>
+                                    {{item.firstName}}
+                                </div>
+                                <div>
+                                    {{item.firstName}}
+                                </div>
+                                <div>
+                                    {{item.firstName}}
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    {{item.firstName}}
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s4">
+                        <div class="swl-card-body-item3">
                             Test
                         </div>
                     </div>
@@ -50,8 +56,4 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col s12">
-        <a id="dashboard-clear-all" class='btn' ng-click="vm.clearClients()">Effacer</a>
-    </div>
-</div>
+<a id="dashboard-clear-all" class='btn' ng-click="vm.clearClients()">Effacer</a>

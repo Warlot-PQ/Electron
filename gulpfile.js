@@ -19,6 +19,7 @@ const _file = {
     directive: _templateBase + '/src/**/*.directive.js',
     factory: _templateBase + '/src/**/*.factory.js',
     service: _templateBase + '/src/**/*.service.js',
+    filter: _templateBase + '/src/**/*.filter.js',
     model: _templateBase + '/src/**/*.model.js',
     indexHtml: _templateBase + '/index.html',
     scripts: _templateBase + '/scripts/**/*',
@@ -44,6 +45,7 @@ gulp.task('injectors', function() {
         .pipe(inject(gulp.src(_file.controller), {starttag: '<!-- angularController:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
         .pipe(inject(gulp.src(_file.factory), {starttag: '<!-- angularFactory:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
         .pipe(inject(gulp.src(_file.service), {starttag: '<!-- angularService:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
+        .pipe(inject(gulp.src(_file.filter), {starttag: '<!-- angularFilter:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
         .pipe(inject(gulp.src(_file.model), {starttag: '<!-- angularModel:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
         .pipe(inject(gulp.src(_file.route), {starttag: '<!-- angularRoute:{{ext}} -->', ignorePath: 'app', addRootSlash: false}))
         .pipe(gulp.dest('dist/app/'));

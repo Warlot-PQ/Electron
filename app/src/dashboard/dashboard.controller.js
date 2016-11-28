@@ -10,7 +10,7 @@
     const _clientFactory = clientFactory;
 
     let vm = this;
-    vm.itemsPerRow = 2;
+    vm.itemsPerRow = 1;
     vm.items = [];
 
     vm.clearClients = clearClients;

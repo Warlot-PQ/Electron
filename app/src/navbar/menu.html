@@ -1,15 +1,18 @@
 <div class="swl-navbar-menu">
-    <div class="valign-wrapper swl-navbar-menu-left flex3 flex">
-        <div class="fa fa-folder-o flex1 swl-navbar-button cursor"></div>
-        <div class="fa fa-calendar flex1 swl-navbar-button cursor"></div>
-        <div class="fa fa-info-circle flex1 swl-navbar-button cursor"></div>
-    </div>
-    <div class="valign-wrapper flex1">
-        <div class="valign fullWidth">
-            {{ vm.date | date:'dd/MM/yyyy' }}
+    <div class="valign-wrapper swl-navbar-menu-left flex1 flex">
+        <div>
+            <div class="fa fa-folder-o cursor swl-navbar-menu-left-item"></div>
+            <div class="fa fa-calendar cursor swl-navbar-menu-left-item"></div>
+            <div class="fa fa-info-circle cursor swl-navbar-menu-left-item"></div>
+            <div id="dashboard-sync-all" class="fa fa-retweet cursor swl-navbar-menu-left-item" ng-click="vm.sync()"></div>
         </div>
-    </div><div class="valign-wrapper swl-navbar-menu-right flex3 flex">
-        <i id="dashboard-sync-all" class="fa fa-retweet flex3 swl-navbar-button cursor" ng-click="vm.sync()"></i>
+    </div>
+    <div class="swl-navbar-menu-inter valign-wrapper flex1">
+        <div class="valign fullWidth">
+            {{ vm.getDateAsString() }}
+        </div>
+    </div>
+    <div class="valign-wrapper swl-navbar-menu-right flex1 flex">
         <div class="swl-header-logo flex1">
             <img src="assets/Logo_Swiss_Life.png" />
         </div>

@@ -4,35 +4,37 @@
     <meta charset="UTF-8">
     <title>SwissLife Angular Electron Prototype</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/swisslife-theme.css">
     <link rel="stylesheet" href="lib/materialize/bin/materialize.css">
     <link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.css">
     <!-- scss:css -->
     <!-- endinject -->
   </head>
   <body ng-app="app">
-    <div class="app-nav">
-      <div class="app-logo">
-        <a ui-sref="welcome">
-          <span class="app-red">Swiss</span>life
-        </a>
-      </div>
-      <ul class="app-menu">
-        <li>
-          N°Idéal parain
-        </li><li>
-        Syntèse
-        </li><li>
-          <a ui-sref="menu.dashboard">Etat des lieux</a>
-        </li><li>
-          <a ui-sref="clientForm">Formulaire client</a>
-        </li><li>
-          <a ui-sref="form">N°Idéal</a>
-        </li>
-      </ul>
+  <!--
+  <div class="app-nav">
+    <div class="app-logo">
+      <a ui-sref="welcome">
+        <span class="app-red">Swiss</span>life
+      </a>
     </div>
-
-    <div class="swl-navbar">
-      <div ui-view="title"></div>
+    <ul class="app-menu">
+      <li>
+        N°Idéal parain
+      </li><li>
+      Syntèse
+      </li><li>
+        <a ui-sref="menu.dashboard">Etat des lieux</a>
+      </li><li>
+        <a ui-sref="clientForm">Formulaire client</a>
+      </li><li>
+        <a ui-sref="form">N°Idéal</a>
+      </li>
+    </ul>
+  </div>
+  -->
+  <div class="swl-navbar">
+    <!--<div ui-view="title"></div>-->
       <div ui-view="menu"></div>
       <div ui-view="submenu"></div>
     </div>
@@ -75,5 +77,7 @@
   <!-- angularFactory:js -->
   <!-- endinject -->
   <!-- angularService:js -->
+  <!-- endinject -->
+  <!-- angularFilter:js -->
   <!-- endinject -->
 </html>

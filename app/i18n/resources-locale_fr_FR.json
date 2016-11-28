@@ -1,3 +1,6 @@
 {
-  "navbar.title": "Home"
+  "navbar.title": "Home",
+
+  "date.dayOfTheWeek": ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", " Dimanche"],
+  "date.month": ["Jan.", "Fev.", "Mar.", "Avr.", "Mai.", "Jui.", "Juil.", "Aoû.", "Sép.", "Oct.", "Nov.", "Déc."]
 }
